@@ -1144,7 +1144,7 @@ h2.headline {
     <span>ℹ️ Detalles de integración</span>
     <span style="font-size:10px;">▼</span>
   </div>
-  <div class="info-popup" style="position:absolute; top:calc(100% + 10px); left:0; width:500px; padding:16px 20px; background:#fff; border:1px solid var(--line); border-radius:12px; box-shadow:0 10px 30px rgba(0,0,0,0.1); opacity:0; pointer-events:none; transform:translateY(-10px); transition:all 0.3s ease; z-index:100;">
+  <div class="info-popup" style="position:absolute; bottom:calc(100% + 10px); left:0; max-width:420px; width:max-content; padding:16px 20px; background:#fff; border:1.5px solid var(--purple-200); border-radius:12px; box-shadow:0 10px 30px rgba(124,58,237,0.12); opacity:0; pointer-events:none; transform:translateY(10px); transition:all 0.3s ease; z-index:100;">
     <p style="margin:0; font-size:15px; color:var(--ink); line-height:1.5;">El asistente opera independientemente del sistema académico (SGA), utilizando sus documentos únicamente como base de conocimiento estática. Coordina la transcripción de voz y síntesis de audio a través de APIs externas para ofrecer una interacción fluida al estudiante.</p>
   </div>
 </div>
@@ -1161,7 +1161,7 @@ h2.headline {
     });
     container.addEventListener('mouseleave', function(){
       popup.style.opacity = '0';
-      popup.style.transform = 'translateY(-10px)';
+      popup.style.transform = 'translateY(10px)';
       popup.style.pointerEvents = 'none';
       icon.style.background = 'var(--purple-50)';
     });
