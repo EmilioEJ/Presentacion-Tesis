@@ -1729,15 +1729,50 @@ h2.headline {
 <h2 class="headline" style="max-width:40ch">Interfaces Desarrolladas: Módulos y pantallas del Sistema Aria.</h2>
 <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:20px;">
 <div class="card" style="padding:0; overflow:hidden;">
-<img src="./Logos/ARIA_CONVERSA.png" style="width:100%; height:450px; object-fit:contain; background:#f3f4f6; border-bottom:1px solid var(--line);"/>
+<img class="clickable-img" src="./Logos/ARIA_CONVERSA.png" style="width:100%; height:450px; object-fit:contain; background:#f3f4f6; border-bottom:1px solid var(--line); cursor:pointer; transition:transform 0.2s ease;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'" title="Clic para ampliar"/>
 <p style="margin:16px 0; font-weight:bold; font-size:16px; text-align:center;">Interfaz Multimodal (Avatar 3D + Voz)</p>
 </div>
 <div class="card" style="padding:0; overflow:hidden;">
-<img src="./Logos/ARIA_Chat.png" style="width:100%; height:450px; object-fit:contain; background:#f3f4f6; border-bottom:1px solid var(--line);"/>
+<img class="clickable-img" src="./Logos/ARIA_Chat.png" style="width:100%; height:450px; object-fit:contain; background:#f3f4f6; border-bottom:1px solid var(--line); cursor:pointer; transition:transform 0.2s ease;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'" title="Clic para ampliar"/>
 <p style="margin:16px 0; font-weight:bold; font-size:16px; text-align:center;">Interfaz Textual (Chat Tradicional)</p>
 </div>
 </div>
 </div>
+</div>
+
+<!-- Modal Lightbox -->
+<div id="imgLightbox" style="position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.85); display:flex; align-items:center; justify-content:center; z-index:99999; opacity:0; pointer-events:none; transition:opacity 0.3s ease; backdrop-filter:blur(5px);">
+  <img id="imgLightboxImg" src="" style="max-width:95vw; max-height:95vh; border-radius:12px; box-shadow:0 15px 50px rgba(0,0,0,0.6);" />
+  <div style="position:absolute; top:30px; right:40px; color:#fff; font-size:40px; font-weight:bold; cursor:pointer; text-shadow:0 2px 4px rgba(0,0,0,0.5);">&times;</div>
+  <div style="position:absolute; bottom:30px; color:#ddd; font-family:var(--font-mono); font-size:14px; text-shadow:0 2px 4px rgba(0,0,0,0.5);">Haz clic en cualquier parte para cerrar</div>
+</div>
+
+<script>
+  (function(){
+    var lightbox = document.getElementById('imgLightbox');
+    var lightboxImg = document.getElementById('imgLightboxImg');
+    var images = document.querySelectorAll('.clickable-img');
+    images.forEach(function(img){
+      img.addEventListener('click', function(){
+        lightboxImg.src = this.src;
+        lightbox.style.opacity = '1';
+        lightbox.style.pointerEvents = 'auto';
+      });
+    });
+    lightbox.addEventListener('click', function(){
+      lightbox.style.opacity = '0';
+      lightbox.style.pointerEvents = 'none';
+      setTimeout(function(){ lightboxImg.src = ''; }, 300);
+    });
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape') {
+        lightbox.style.opacity = '0';
+        lightbox.style.pointerEvents = 'none';
+        setTimeout(function(){ lightboxImg.src = ''; }, 300);
+      }
+    });
+  })();
+</script>
 </section>
 <section class="slide" data-ch="6" id="slide-29">
 <div class="slide-inner grid-2">
